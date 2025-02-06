@@ -14,4 +14,5 @@ This repository stores all my favorite Oh-my-posh configurations (custom and the
 - Install oh-my-posh using curl
 - Install unzip
 - create a directory for your configurations under `.config/`
+- Install a Nerd Font (for the icons and better terminal visuals)
  
