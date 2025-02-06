@@ -1,0 +1,147 @@
+console_title_template = '{{if .Root}}root :: {{end}}{{.Shell}} :: {{.Folder}}'
+version = 3
+final_space = true
+
+[upgrade]
+  source = 'cdn'
+  interval = '168h'
+  auto = false
+  notice = false
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+
+  [[blocks.segments]]
+    leading_diamond = '▓'
+    foreground = '#000000'
+    background = '#ffea00'
+    type = 'text'
+    style = 'diamond'
+
+  [[blocks.segments]]
+    template = ' 󱃾 {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} '
+    foreground = '#000000'
+    background = '#ffea00'
+    type = 'kubectl'
+    style = 'powerline'
+
+  [[blocks.segments]]
+    template = '  {{ .Name }} [ {{ .Origin }} ] '
+    foreground = '#000000'
+    powerline_symbol = ''
+    background = '#008AD7'
+    type = 'az'
+    style = 'powerline'
+
+    [blocks.segments.properties]
+      source = 'cli'
+
+  [[blocks.segments]]
+    template = '  {{ .Name }} [ {{ .Origin }} ] '
+    foreground = '#FFFFFF'
+    powerline_symbol = ''
+    background = '#012456'
+    type = 'az'
+    style = 'powerline'
+
+    [blocks.segments.properties]
+      source = 'pwsh'
+
+  [[blocks.segments]]
+    template = ' 󰸏 {{.Profile}}{{if .Region}}@{{.Region}}{{end}}'
+    foreground = '#000000'
+    powerline_symbol = ''
+    background = '#FFA400'
+    type = 'aws'
+    style = 'powerline'
+
+    [blocks.segments.properties]
+      display_default = true
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    leading_diamond = '▓'
+    template = ' {{ if .WSL }}{{ .Icon }} on {{ end }} <#ffea00></>'
+    foreground = '#26C6DA'
+    background = '#2f2f2f'
+    type = 'os'
+    style = 'diamond'
+
+    [blocks.segments.properties]
+      alpine = ''
+      arch = ''
+      centos = ''
+      debian = ''
+      elementary = ''
+      fedora = ''
+      gentoo = ''
+      linux = ''
+      macos = ''
+      manjaro = ''
+      mint = ''
+      opensuse = ''
+      raspbian = ''
+      ubuntu = ''
+      windows = ''
+
+  [[blocks.segments]]
+    template = ' {{ if ne .Env.POSH_SESSION_DEFAULT_USER .UserName }}{{ .UserName }}{{ end }}<#ffea00> </>'
+    foreground = '#ffea00'
+    background = '#2f2f2f'
+    type = 'session'
+    style = 'diamond'
+
+  [[blocks.segments]]
+    template = ' <#ffea00> </>'
+    foreground = '#ffea00'
+    background = '#2f2f2f'
+    type = 'root'
+    style = 'diamond'
+
+  [[blocks.segments]]
+    template = '<#f2f200>  </>{{ .Path }} '
+    foreground = '#fafafa'
+    background = '#2f2f2f'
+    type = 'path'
+    style = 'diamond'
+
+    [blocks.segments.properties]
+      folder_icon = '<#B5B2C2> </>'
+      folder_separator_icon = '<#ffea00> </>'
+      home_icon = '  '
+      style = 'agnoster_short'
+
+  [[blocks.segments]]
+    template = '<#ffea00> </>{{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }}<#E84855>  {{ .Working.String }}</>{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}<#2FDA4E>  {{ .Staging.String }}</>{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} '
+    foreground = '#ffea00'
+    background = '#2f2f2f'
+    type = 'git'
+    style = 'diamond'
+    foreground_templates = ['{{ if or (.Working.Changed) (.Staging.Changed) }}#ffea00{{ end }}', '{{ if gt .Ahead 0 }}#2EC4B6{{ end }}', '{{ if gt .Behind 0 }}#8A4FFF{{ end }}']
+
+    [blocks.segments.properties]
+      fetch_stash_count = true
+      fetch_status = true
+      fetch_upstream_icon = true
+
+  [[blocks.segments]]
+    trailing_diamond = ''
+    foreground = '#fafafa'
+    background = '#2f2f2f'
+    type = 'text'
+    style = 'diamond'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+
+  [[blocks.segments]]
+    template = ' ❯ '
+    foreground = '#ffea00'
+    type = 'text'
+    style = 'plain'
