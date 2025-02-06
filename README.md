@@ -9,3 +9,9 @@ This repository stores all my favorite Oh-my-posh configurations (custom and the
     - Kali
     - PixelRobots
     - Plague
+
+## Prerequisites
+- Install oh-my-posh using curl
+- Install unzip
+- create a directory for your configurations under `.config/`
+ 
